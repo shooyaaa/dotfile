@@ -1,0 +1,10 @@
+alias d='cd ~/code'
+alias db='mysql -uroot -p'
+alias dump80='sudo tcpdump -s 0 -A -i lo0 '\''tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'\'''
+alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
+alias ll='ls -lAFh'
+alias log='tail -f /usr/local/etc/nginx/log/error.log'
+alias services='brew services'
+
+alias fuck='echo fuck'
+alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'

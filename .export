@@ -1,0 +1,20 @@
+#enables colorin the terminal bash shell export
+#
+export CLICOLOR=1
+
+#sets up thecolor scheme for list export
+
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+#sets up theprompt color (currently a green similar to linux terminal)
+
+export PS1='\[\033[01;32m\]\u@\[\033[01;36m\]\W\[\033[00m\]\$ '
+#enables colorfor iTerm
+
+export TERM=xterm-new
+#alias test1='ssh xun.luan@10.13.0.45 -t "sudo su -;" '
+
+export CODEPATH='/Users/luanxun/code/shooyaaa/'
+export SEDI='mac'
+export EDITOR='vim'
+
