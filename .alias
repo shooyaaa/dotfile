@@ -8,3 +8,16 @@ alias services='brew services'
 
 alias fuck='echo fuck'
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
+
+devbox() {
+    arg=($@)
+    base='/www/devbox/game/server_';
+    echo test1:${base}${arg}
+}
+
+sdevbox() {
+    box=$1
+    file=$2
+    boxPath=`devbox ${box}`
+    scp ${file} ${boxPath}/${file}
+}
