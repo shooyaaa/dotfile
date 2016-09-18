@@ -37,3 +37,7 @@ for file in ${LINKFILES};do
     BASENAME=`basename $file`
     ln -s -f ${file} ${HOME}/${BASENAME} 
 done
+
+#process vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
