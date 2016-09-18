@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PWD=`pwd`
-DOTFILES=`find ${PWD} -maxdepth 1 -name '\.*' -type f|xargs basename`
+DOTFILES=`find ${PWD} -maxdepth 1 -name '\.*' -type f`
 BASHPROFILES=( .bash_profile .bashrc )
 HOME=`echo $HOME`
 
@@ -19,6 +19,7 @@ else
     echo "add dotfile to etc file:${ETCFILE}"
 fi
 for file in ${DOTFILES};do
+    file=`basename ${file}`
     FULLPATH=${PWD}/$file
     ln -s -f ${FULLPATH} ${HOME}/${file} 
     SOURCECMD="source $file"
