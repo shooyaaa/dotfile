@@ -1,7 +1,9 @@
 #!/bin/bash
 
-PWD=`pwd`
-DOTFILES=`find ${PWD} -maxdepth 1 -name '\.*' -type f`
+BASEDIR=$(dirname "$0")
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
+
+DOTFILES=`find ${DIR} -maxdepth 1 -name '\.*' -type f`
 BASHPROFILES=( .bash_profile .bashrc )
 HOME=`echo $HOME`
 
@@ -20,7 +22,7 @@ else
 fi
 for file in ${DOTFILES};do
     file=`basename ${file}`
-    FULLPATH=${PWD}/$file
+    FULLPATH=${DIR}/$file
     ln -s -f ${FULLPATH} ${HOME}/${file} 
     SOURCECMD="source $file"
     HASSOURCE=`grep "${SOURCECMD}" ${ETCFILE}|wc -l`
@@ -30,7 +32,7 @@ for file in ${DOTFILES};do
     
 done
 
-LINKFILES=`find ${PWD}/soft_links -maxdepth 1 -name '\.*' -type f`
+LINKFILES=`find ${DIR}/soft_links -maxdepth 1 -name '\.*' -type f`
 for file in ${LINKFILES};do
     BASENAME=`basename $file`
     ln -s -f ${file} ${HOME}/${BASENAME} 
