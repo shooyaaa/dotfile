@@ -9,6 +9,13 @@ alias services='brew services'
 alias fuck='echo fuck'
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
 
+alias gtcam='git commit -a -m'
+alias gtba='git branch -a'
+alias gtb='git branch'
+alias gts='git status'
+alias gtbc='git checkout'
+alias gtbcnew='git checkout -b'
+
 devbox() {
     arg=($@)
     base='/www/devbox/game/server_';
