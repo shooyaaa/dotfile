@@ -1,5 +1,16 @@
 #!/bin/bash
 
+OS="`uname`"
+case $OS in
+      'Linux')
+        OS='Linux'
+        ;;
+        'Darwin') 
+        OS='Mac'
+        ;;
+esac
+echo ${OS}
+
 BASEDIR=$(dirname "$0")
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
@@ -41,3 +52,7 @@ done
 #process vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+
+echo ${DIR}
+

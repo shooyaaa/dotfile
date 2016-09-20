@@ -1,5 +1,43 @@
+
+#detect is session a ssh or just not 
+if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
+      SESSION_TYPE=remote/ssh
+      echo 'ssh'
+else
+  case $(ps -o comm= -p $PPID) in
+      sshd|*/sshd) 
+        SESSION_TYPE=remote/ssh
+        ;; 
+      *)
+        SESSION_TYPE=local
+      ;;
+  esac
+fi
+
+#detect os type
+OS="`uname`"
+case $OS in
+  'Linux')
+    OS='Linux'
+    ;;
+  'FreeBSD')
+    OS='FreeBSD'
+    ;;
+  'WindowsNT')
+    OS='Windows'
+    ;;
+  'Darwin') 
+    OS='Mac'
+    ;;
+  'SunOS')
+    OS='Solaris'
+    ;;
+  'AIX') ;;
+  *) ;;
+esac
+
 alias d='cd ~/code'
-alias db='mysql -uroot -p'
+alias db='mysql -uroot -S /var/run/mysqld/mysqld.sock'
 alias dump80='sudo tcpdump -s 0 -A -i lo0 '\''tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'\'''
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
 alias ll='ls -lAFh'
@@ -22,9 +60,16 @@ devbox() {
     echo test1:${base}${arg}
 }
 
-sdevbox() {
+sbox() {
     box=$1
     file=$2
     boxPath=`devbox ${box}`
     scp ${file} ${boxPath}/${file}
 }
+boxs() {
+    box=$1
+    file=$2
+    boxPath=`devbox ${box}`
+    scp ${boxPath}/${file} ${file}
+}
+
