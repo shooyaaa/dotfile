@@ -14,7 +14,7 @@ echo ${OS}
 BASEDIR=$(dirname "$0")
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
-DOTFILES=`find ${DIR} -maxdepth 1 -name '\.*' -type f`
+DOTFILES=`find ${DIR} -maxdepth 1 -name '\.*' -type f |sort`
 BASHPROFILES=( .bash_profile .bashrc )
 HOME=`echo $HOME`
 
