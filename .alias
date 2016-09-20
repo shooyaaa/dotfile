@@ -1,12 +1,11 @@
 
 #detect is session a ssh or just not 
 if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
-      SESSION_TYPE=remote/ssh
-      echo 'ssh'
+      SESSION_TYPE=ssh
 else
   case $(ps -o comm= -p $PPID) in
       sshd|*/sshd) 
-        SESSION_TYPE=remote/ssh
+        SESSION_TYPE=ssh
         ;; 
       *)
         SESSION_TYPE=local
