@@ -3,6 +3,7 @@
 
 function FindProxyForURL(url, host) {
  
+    alert(url)
 // If the hostname matches, send direct.
     if (dnsDomainIs(host, "intranet.domain.com") ||
         shExpMatch(host, "(*.abcdomain.com|abcdomain.com)"))

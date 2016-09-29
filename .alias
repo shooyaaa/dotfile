@@ -43,7 +43,7 @@ alias ll='ls -lAFh'
 alias log='tail -f /usr/local/etc/nginx/log/error.log'
 alias services='brew services'
 
-alias fuck='echo fuck'
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
 
 alias gtcam='git commit -a -m'
