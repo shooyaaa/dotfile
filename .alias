@@ -46,12 +46,15 @@ alias services='brew services'
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
 
+#all git abbre
 alias gtcam='git commit -a -m'
 alias gtba='git branch -a'
 alias gtb='git branch'
 alias gts='git status'
 alias gtbc='git checkout'
 alias gtbcnew='git checkout -b'
+alias gdiff='git diff'
+alias gpull='git pull'
 
 devbox() {
     arg=($@)

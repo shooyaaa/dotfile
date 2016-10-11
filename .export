@@ -23,3 +23,57 @@ export CODEPATH='/Users/luanxun/code/shooyaaa/'
 export SEDI='mac'
 export EDITOR='vim'
 
+#easily extract all compressed file types
+extract () {
+   if [ -f "$1" ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf -- "$1"    ;;
+           *.tar.gz)    tar xvzf -- "$1"    ;;
+           *.bz2)       bunzip2 -- "$1"     ;;
+           *.rar)       unrar x -- "$1"     ;;
+           *.gz)        gunzip -- "$1"      ;;
+           *.tar)       tar xvf -- "$1"     ;;
+           *.tbz2)      tar xvjf -- "$1"    ;;
+           *.tgz)       tar xvzf -- "$1"    ;;
+           *.zip)       unzip -- "$1"       ;;
+           *.Z)         uncompress -- "$1"  ;;
+           *.7z)        7z x -- "$1"        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file"
+   fi
+}
+ 
+# Get weather data for Bristol
+# You need to register at 
+# http://www.wunderground.com/weather/api/d/login.html
+# to get an API key
+weather() {
+    key=YOUR_API_KEY
+    echo BRISTOL:
+    echo ''
+    data=$(curl -s "http://api.wunderground.com/api/$key/forecast/q/UK/Bristol.json" | jq -r ['.forecast.txt_forecast.forecastday[] | [.title], [.fcttext], ["break"] | .[]']) 
+    echo $data | sed -e 's/[,]/\n/g' -e 's/[]"]/''/g' -e 's/[[]/''/g' -e 's/break/\n/g'
+}
+ 
+# Define a word using collinsdictionary.com
+define() {
+  curl -s "http://www.collinsdictionary.com/dictionary/english/$*" | sed -n '/class="def"/p' | awk '{gsub(/.*<span class="def">|<\/span>.*/,"");print}' | sed "s/<[^>]\+>//g";
+}
+ 
+# Epoch time conversion
+epoch() {
+  TESTREG="[\d{10}]"
+  if [[ "$1" =~ $TESTREG ]]; then
+    # is epoch
+    date -d @$*
+  else
+    # is date
+    if [ $# -gt 0 ]; then
+      date +%s --date="$*"
+    else
+      date +%s
+    fi
+  fi
+}
