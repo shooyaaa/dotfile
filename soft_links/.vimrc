@@ -11,6 +11,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'shawncplus/phpcomplete.vim'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -99,3 +101,14 @@ map g/ <Plug>(incsearch-stay)
 cmap w!! w !sudo tee > /dev/null %
 
 set clipboard=unnamed
+
+" Plugin syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ["php"]
