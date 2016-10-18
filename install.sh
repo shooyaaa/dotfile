@@ -1,5 +1,6 @@
 #!/bin/bash
 
+USER=`whoami`
 OS="`uname`"
 case $OS in
       'Linux')
@@ -31,6 +32,7 @@ if [ -z ${ETCFILE} ];then
 else
     echo "add dotfile to etc file:${ETCFILE}"
 fi
+FIRSTINSTALL=0
 for file in ${DOTFILES};do
     file=`basename ${file}`
     FULLPATH=${DIR}/$file
@@ -39,9 +41,15 @@ for file in ${DOTFILES};do
     HASSOURCE=`grep "${SOURCECMD}" ${ETCFILE}|wc -l`
     if [ 0 -eq ${HASSOURCE} ];then
         echo "${SOURCECMD}" >> ${ETCFILE}
+        FIRSTINSTALL=1
     fi
-    
 done
+
+if [ ${FIRSTINSTALL} -eq 1 ];then
+    echo 'install crontab '
+    line="* 5 * * * cd ${DIR};git pull"
+    (crontab -u ${USER} -l; echo "$line" ) | crontab -u ${USER} -
+fi
 
 LINKFILES=`find ${DIR}/soft_links -maxdepth 1 -name '\.*' -type f`
 for file in ${LINKFILES};do

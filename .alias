@@ -53,7 +53,7 @@ alias gtb='git branch'
 alias gts='git status'
 alias gtbc='git checkout'
 alias gtbcnew='git checkout -b'
-alias gdiff='git diff'
+alias gd='git diff'
 alias gpull='git pull'
 alias gpush='git push'
 
