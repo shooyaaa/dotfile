@@ -12,7 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'vim-airline/vim-airline'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -112,3 +114,16 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers = ["php"]
+
+
+"start config of airline
+set laststatus=2
+set t_Co=256
+set encoding=utf-8
+
+let g:ycm_auto_trigger = 1
+
+function MyTabBuffer()
+    echo 'tab buffer'
+endfunction
+map <TAB> :MyTabBuffer()

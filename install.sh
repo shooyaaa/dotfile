@@ -4,10 +4,10 @@ USER=`whoami`
 OS="`uname`"
 case $OS in
       'Linux')
-        OS='Linux'
+        OS='linux'
         ;;
         'Darwin') 
-        OS='Mac'
+        OS='mac'
         ;;
 esac
 echo ${OS}
@@ -49,6 +49,7 @@ if [ ${FIRSTINSTALL} -eq 1 ];then
     echo 'install crontab '
     line="* 5 * * * cd ${DIR};git pull"
     (crontab -u ${USER} -l; echo "$line" ) | crontab -u ${USER} -
+    source ${DIR}/${OS}/install_app.sh
 fi
 
 LINKFILES=`find ${DIR}/soft_links -maxdepth 1 -name '\.*' -type f`
@@ -61,6 +62,8 @@ done
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+cd ~/.vim/bundle/YouCompleteMe
+./install.py
 
 echo ${DIR}
 
