@@ -15,6 +15,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'joonty/vdebug'
+Plugin 'altercation/vim-colors-solarized'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -52,9 +54,6 @@ filetype plugin indent on    " required
 " "
 set nu
 syntax on
-set cul
-set cuc
-color darkblue
 filetype plugin on
 filetype indent on
 
@@ -67,8 +66,8 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
-set ai
-set si
+set background=dark
+"colorscheme solarized 
 
 set wildmenu
 "au VimEnter *  NERDTree
@@ -101,6 +100,8 @@ map g/ <Plug>(incsearch-stay)
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
+map qq <ESC>:q!<ENTER>
+map qw <ESC>:w<ENTER>
 
 set clipboard=unnamed
 
@@ -126,4 +127,4 @@ let g:ycm_auto_trigger = 1
 function MyTabBuffer()
     echo 'tab buffer'
 endfunction
-map <TAB> :MyTabBuffer()
+map <TAB> <C-W>W

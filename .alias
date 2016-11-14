@@ -27,6 +27,7 @@ case $OS in
     ;;
   'Darwin') 
     OS='Mac'
+    alias services='brew services'
     ;;
   'SunOS')
     OS='Solaris'
@@ -41,7 +42,6 @@ alias dump80='sudo tcpdump -s 0 -A -i lo0 '\''tcp port 80 and (((ip[2:2] - ((ip[
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
 alias ll='ls -lAFh'
 alias log='tail -f /usr/local/etc/nginx/log/error.log'
-alias services='brew services'
 
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
