@@ -60,7 +60,7 @@ alias gpush='git push'
 devbox() {
     arg=($@)
     base='/www/devbox/game/server_';
-    echo test1:${base}${arg}
+    echo 101:${base}${arg}
 }
 
 sbox() {
@@ -76,3 +76,6 @@ boxs() {
     scp ${boxPath}/${file} ${file}
 }
 
+find_url() {
+    curl -s $1 | grep -ioE "(https?:?)?//(\w+\.?)*(/[a-z0-9\?=%\.&#]+)+"
+}
