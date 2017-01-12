@@ -50,6 +50,8 @@ if [ ${FIRSTINSTALL} -eq 1 ];then
     line="* 5 * * * cd ${DIR};git pull"
     (crontab -u ${USER} -l; echo "$line" ) | crontab -u ${USER} -
     source ${DIR}/${OS}/install_app.sh
+    [ -f ~/bin ] && echo '' || mkdir ~/bin
+    curl http://beyondgrep.com/ack-2.14-single-file > ~/bin/ack && chmod 0755 !#:3
 fi
 
 LINKFILES=`find ${DIR}/soft_links -maxdepth 1 -name '\.*' -type f`

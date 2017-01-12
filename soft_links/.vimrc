@@ -16,6 +16,7 @@ Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'joonty/vdebug'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'valloric/youcompleteme'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
