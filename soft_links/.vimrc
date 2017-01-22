@@ -67,7 +67,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set background=dark
-"colorscheme solarized 
+"colorscheme solarized
 
 set wildmenu
 "au VimEnter *  NERDTree
@@ -128,3 +128,15 @@ function MyTabBuffer()
     echo 'tab buffer'
 endfunction
 map <TAB> <C-W>W
+
+"remove trailing whitespace when write
+function RemoveTrailingWhitespace()
+    if &ft != "diff"
+        let b:curcol = col(".")
+        let b:curline = line(".")
+        silent! %s/\s\+$//
+        silent! %s/\(\s*\n\)\+\%$//
+        call cursor(b:curline, b:curcol)
+    endif
+endfunction
+autocmd BufWritePre * call RemoveTrailingWhitespace()
