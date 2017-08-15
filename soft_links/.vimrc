@@ -144,9 +144,9 @@ endfunction
 autocmd BufWritePre * call RemoveTrailingWhitespace()
 
 function BuildJs()
-    let cwd = getcwd()
-    if !empty(glob(cwd . "/build.sh"))
-        silent! !glob(cwd . "/build.sh") 2>&1 >/dev/null &
+    let g:buildFile = getcwd() . "/build.sh"
+    if !empty(glob(g:buildFile))
+        silent execute "!" . g:buildFile . " 2>&1 >/dev/null &"
     endif
 endfunction
 
