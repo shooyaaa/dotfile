@@ -17,6 +17,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'joonty/vdebug'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'valloric/youcompleteme'
+Plugin 'pangloss/vim-javascript'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -114,7 +115,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ["php"]
+let g:syntastic_php_checkers = ['php']
+"let g:syntastic_php_checkers = ['php'], 'phpcs', 'phpmd']
 
 
 "start config of airline
@@ -141,4 +143,13 @@ function RemoveTrailingWhitespace()
 endfunction
 autocmd BufWritePre * call RemoveTrailingWhitespace()
 
-au BufWritePost *.js silent! !~/code/js_bubble/build.sh 2>&1 >/dev/null &
+function BuildJs()
+    let cwd = getcwd()
+    if !empty(glob(cwd . "/build.sh"))
+        silent! !glob(cwd . "/build.sh") 2>&1 >/dev/null &
+    endif
+endfunction
+
+autocmd BufWritePost *.js call BuildJs()
+
+"au BufWritePost *.js silent! !~/code/shooyaaa/js_bubble/build.sh 2>&1 >/dev/null &
