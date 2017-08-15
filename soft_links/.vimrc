@@ -141,4 +141,4 @@ function RemoveTrailingWhitespace()
 endfunction
 autocmd BufWritePre * call RemoveTrailingWhitespace()
 
-au BufWritePost *.js silent! !~/code/shooyaaa/js_bubble/build.sh 2>&1 >/dev/null &
+au BufWritePost *.js silent! !~/code/js_bubble/build.sh 2>&1 >/dev/null &

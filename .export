@@ -16,7 +16,7 @@ fi
 export PS1="${PS1UCOLOR}\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h:\[$(tput sgr0)\]\[\033[38;5;249m\]\l\[$(tput sgr0)\]\[\033[38;5;15m\][\[$(tput sgr0)\]\[\033[38;5;59m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]] \$(git branch 2>/dev/null | grep '^*' | colrm 1 2) \n\\$ \[$(tput sgr0)\] "
 #enables colorfor iTerm
 
-export TERM=xterm-new
+#export TERM=xterm-new
 #alias test1='ssh xun.luan@10.13.0.45 -t "sudo su -;" '
 
 export CODEPATH='/Users/luanxun/code/shooyaaa/'
@@ -44,24 +44,24 @@ extract () {
        echo "'$1' is not a valid file"
    fi
 }
- 
+
 # Get weather data for Bristol
-# You need to register at 
+# You need to register at
 # http://www.wunderground.com/weather/api/d/login.html
 # to get an API key
 weather() {
     key=YOUR_API_KEY
     echo BRISTOL:
     echo ''
-    data=$(curl -s "http://api.wunderground.com/api/$key/forecast/q/UK/Bristol.json" | jq -r ['.forecast.txt_forecast.forecastday[] | [.title], [.fcttext], ["break"] | .[]']) 
+    data=$(curl -s "http://api.wunderground.com/api/$key/forecast/q/UK/Bristol.json" | jq -r ['.forecast.txt_forecast.forecastday[] | [.title], [.fcttext], ["break"] | .[]'])
     echo $data | sed -e 's/[,]/\n/g' -e 's/[]"]/''/g' -e 's/[[]/''/g' -e 's/break/\n/g'
 }
- 
+
 # Define a word using collinsdictionary.com
 define() {
   curl -s "http://www.collinsdictionary.com/dictionary/english/$*" | sed -n '/class="def"/p' | awk '{gsub(/.*<span class="def">|<\/span>.*/,"");print}' | sed "s/<[^>]\+>//g";
 }
- 
+
 # Epoch time conversion
 epoch() {
   TESTREG="[\d{10}]"
