@@ -1,0 +1,13 @@
+[Unit]
+Description=Creates a public reverse tunnel from a server to a port of this computer.
+After=network.target
+Documentation=https://www.idupree.com/2015/systemd-ssh-reverse-tunnel
+
+[Service]
+Type=simple
+User=CONFIG_LOCAL_SSH_CLIENT_USER
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/bin/sh -c 'exec autossh -M 0 -oStrictHostKeyChecking=no -oServerAliveInterval=60 -oServerAliveCountMax=3 -oExitOnForwardFailure=yes -N -R :CONFIG_REMOTE_PORT_TO_OPEN:localhost:CONFIG_LOCAL_PORT_TO_EXPOSE CONFIG_REMOTE_SERVER_USER@CONFIG_REMOTE_SERVER_IP'
+
+[Install]
+WantedBy=multi-user.target
