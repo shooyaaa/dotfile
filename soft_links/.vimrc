@@ -117,12 +117,15 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers = ['php']
 "let g:syntastic_php_checkers = ['php'], 'phpcs', 'phpmd']
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+
 
 
 "start config of airline
 set laststatus=2
 set t_Co=256
 set encoding=utf-8
+set hlsearch
 
 let g:ycm_auto_trigger = 1
 
