@@ -156,3 +156,12 @@ endfunction
 autocmd BufWritePost *.js call BuildJs()
 
 "au BufWritePost *.js silent! !~/code/shooyaaa/js_bubble/build.sh 2>&1 >/dev/null &
+"
+set cursorcolumn
+set cursorline
+"show  error  when line length bigger then 120
+match ErrorMsg '\%>120v.\+'
+
+"show invisible blank or tab
+set list
+set listchars=tab:>-,trail:·
