@@ -18,9 +18,14 @@ export PS1="${PS1UCOLOR}\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h:\[$(tput sgr0)\]\
 
 #export TERM=xterm-new
 #alias test1='ssh xun.luan@10.13.0.45 -t "sudo su -;" '
+export GOPATH="$HOME/code/go"
 
-export CODEPATH='/Users/luanxun/code/shooyaaa/'
-export SEDI='mac'
+OS='uname'
+
+export CODEPATH="$HOME/code/shooyaaa/"
+if [ ${os} == 'Darwin' ];then
+    export SEDI='mac'
+fi
 export EDITOR='vim'
 
 #easily extract all compressed file types
