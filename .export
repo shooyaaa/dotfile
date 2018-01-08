@@ -23,7 +23,7 @@ export GOPATH="$HOME/code/go"
 OS='uname'
 
 export CODEPATH="$HOME/code/shooyaaa/"
-if [ ${os} == 'Darwin' ];then
+if [ "${os}" == "Darwin" ];then
     export SEDI='mac'
 fi
 export EDITOR='vim'
