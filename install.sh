@@ -6,7 +6,7 @@ case $OS in
       'Linux')
         OS='linux'
         ;;
-        'Darwin') 
+        'Darwin')
         OS='mac'
         ;;
 esac
@@ -36,7 +36,7 @@ FIRSTINSTALL=0
 for file in ${DOTFILES};do
     file=`basename ${file}`
     FULLPATH=${DIR}/$file
-    ln -s -f ${FULLPATH} ${HOME}/${file} 
+    ln -s -f ${FULLPATH} ${HOME}/${file}
     SOURCECMD="source $file"
     HASSOURCE=`grep "${SOURCECMD}" ${ETCFILE}|wc -l`
     if [ 0 -eq ${HASSOURCE} ];then
@@ -57,7 +57,7 @@ fi
 LINKFILES=`find ${DIR}/soft_links -maxdepth 1 -name '\.*' -type f`
 for file in ${LINKFILES};do
     BASENAME=`basename $file`
-    ln -s -f ${file} ${HOME}/${BASENAME} 
+    ln -s -f ${file} ${HOME}/${BASENAME}
 done
 
 #process vim
@@ -69,3 +69,14 @@ cd ~/.vim/bundle/YouCompleteMe
 
 echo ${DIR}
 
+
+SOURCEPATH=${HOME}/code/source_code
+mkdir -p ${SOURCEPATH}
+cd ${SOURCEPATH}
+git clone https://github.com/facebook/watchman.git
+cd watchman
+git checkout v4.9.0  # the latest stable release
+./autogen.sh
+./configure
+make
+sudo make install
