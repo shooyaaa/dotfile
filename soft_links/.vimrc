@@ -18,6 +18,7 @@ Plugin 'joonty/vdebug'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'valloric/youcompleteme'
 Plugin 'pangloss/vim-javascript'
+Plugin 'fatih/vim-go'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -163,5 +164,5 @@ set cursorline
 match ErrorMsg '\%>120v.\+'
 
 "show invisible blank or tab
-set list
-set listchars=tab:>-,trail:·
+"set listchars=tab:>-,trail:·
+set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→
