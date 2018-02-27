@@ -37,7 +37,7 @@ for file in ${DOTFILES};do
     file=`basename ${file}`
     FULLPATH=${DIR}/$file
     ln -s -f ${FULLPATH} ${HOME}/${file}
-    SOURCECMD="source $file"
+    SOURCECMD="source ~/$file"
     HASSOURCE=`grep "${SOURCECMD}" ${ETCFILE}|wc -l`
     if [ 0 -eq ${HASSOURCE} ];then
         echo "${SOURCECMD}" >> ${ETCFILE}
