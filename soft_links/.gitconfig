@@ -1,0 +1,17 @@
+# This is Git's per-user configuration file.
+[core]
+# Please adapt and uncomment the following lines:
+#	user = luanxun
+#	email = luanxun@luanxundeMacBook-Pro.local
+[user]
+	email = xun.luan@funplus.com
+	name = luanxun
+[push]
+	default = current
+[pull]
+	rebase = true
+[alias]
+	dump = cat-file -p
+    co = checkout
+    hide = update-index --assume-unchanged
+    unhide = update-index --no-assume-unchanged
