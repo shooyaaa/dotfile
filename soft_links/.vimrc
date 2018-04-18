@@ -4,8 +4,10 @@ if has('python3')
     set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
 else
     command! -nargs=1 Py py <args>
-    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
-    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+    if has('pythondll')
+        set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+        set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+    endif
 endif
 set nocompatible              " be iMproved, required
 filetype off                  " required
