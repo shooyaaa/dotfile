@@ -1,7 +1,9 @@
 if has('python3')
     command! -nargs=1 Py py3 <args>
-    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
-    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
+    if has('pythonthreedll')
+        set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
+        set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
+    endif
 else
     command! -nargs=1 Py py <args>
     if has('pythondll')
