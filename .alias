@@ -38,7 +38,7 @@ case $OS in
 esac
 
 alias d='cd ~/code'
-alias db='mysql -uroot -S /var/run/mysqld/mysqld.sock'
+alias db='mysql -uroot -S /tmp/mysqld.sock'
 alias dump80='sudo tcpdump -s 0 -A -i lo0 '\''tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'\'''
 alias gethost='ssh deploy "php /mnt/deploy/gethost.php"'
 alias ll='ls -lAFh'
@@ -57,6 +57,7 @@ alias gtbcnew='git checkout -b'
 alias gd='git diff'
 alias gpull='git pull'
 alias gpush='git push'
+alias gg='cd $GOPATH/src/github.com/shooyaaa'
 
 devbox() {
     arg=($@)

@@ -1,3 +1,16 @@
+if has('python3')
+    command! -nargs=1 Py py3 <args>
+    if has('pythonthreedll')
+        set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
+        set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
+    endif
+else
+    command! -nargs=1 Py py <args>
+    if has('pythondll')
+        set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+        set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+    endif
+endif
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -18,6 +31,7 @@ Plugin 'joonty/vdebug'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'valloric/youcompleteme'
 Plugin 'pangloss/vim-javascript'
+Plugin 'fatih/vim-go'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -53,6 +67,7 @@ filetype plugin indent on    " required
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
 " "
+"set rnu
 set nu
 syntax on
 filetype plugin on
@@ -117,12 +132,15 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers = ['php']
 "let g:syntastic_php_checkers = ['php'], 'phpcs', 'phpmd']
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+
 
 
 "start config of airline
 set laststatus=2
 set t_Co=256
 set encoding=utf-8
+set hlsearch
 
 let g:ycm_auto_trigger = 1
 
@@ -154,3 +172,12 @@ autocmd BufWritePost *.js call BuildJs()
 
 "au BufWritePost *.js silent! !~/code/shooyaaa/js_bubble/build.sh 2>&1 >/dev/null &
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+"
+set cursorcolumn
+set cursorline
+"show  error  when line length bigger then 120
+match ErrorMsg '\%>120v.\+'
+
+"show invisible blank or tab
+"set listchars=tab:>-,trail:·
+set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→

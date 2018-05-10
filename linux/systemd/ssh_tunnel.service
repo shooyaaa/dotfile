@@ -1,7 +1,7 @@
 [Unit]
 Description=Creates a public reverse tunnel from a server to a port of this computer.
 After=network.target
-Documentation=https://www.idupree.com/2015/systemd-ssh-reverse-tunnel
+Documentation=https://www.idupree.com/2015/systemd-ssh-reverse-tunnel;https://francispereira.com/alway-connected-ssh-reverse-port-forwarding-with-systemd.html
 
 [Service]
 Type=simple
