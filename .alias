@@ -1,12 +1,12 @@
 
-#detect is session a ssh or just not 
+#detect is session a ssh or just not
 if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
       SESSION_TYPE=ssh
 else
   case $(ps -o comm= -p $PPID) in
-      sshd|*/sshd) 
+      sshd|*/sshd)
         SESSION_TYPE=ssh
-        ;; 
+        ;;
       *)
         SESSION_TYPE=local
       ;;
@@ -25,9 +25,10 @@ case $OS in
   'WindowsNT')
     OS='Windows'
     ;;
-  'Darwin') 
+  'Darwin')
     OS='Mac'
     alias services='brew services'
+    alias vim='mvim -v'
     ;;
   'SunOS')
     OS='Solaris'
