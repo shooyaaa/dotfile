@@ -1,0 +1,16 @@
+[Unit]
+Description=Setup a secure tunnel to %I
+After=network.target
+
+[Service]
+User=pi
+Environment="LOCAL_ADDR=localhost"
+EnvironmentFile=/etc/default/sshtunnel@%I
+ExecStart=/usr/bin/ssh -N -T -o ServerAliveInterval=30 -o ExitOnForwardFailure=yes -R ${REMOTE_PORT}:localhost:${LOCAL_PORT} ${TARGET}
+
+# Restart every >2 seconds to avoid StartLimitInterval failure
+RestartSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

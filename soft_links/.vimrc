@@ -1,9 +1,7 @@
 if has('python3')
     command! -nargs=1 Py py3 <args>
-    if has('pythonthreedll')
         set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
         set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
-    endif
 else
     command! -nargs=1 Py py <args>
     if has('pythondll')
@@ -32,6 +30,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'valloric/youcompleteme'
 Plugin 'pangloss/vim-javascript'
 Plugin 'fatih/vim-go'
+Plugin 'leafgarland/typescript-vim'
 "
 "" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
