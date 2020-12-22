@@ -13,17 +13,16 @@ if [ "$SESSION_TYPE" = "ssh" ];then
 else
     PS1UCOLOR="\[\033[38;5;10m\]"
 fi
-export PS1="${PS1UCOLOR}\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h:\[$(tput sgr0)\]\[\033[38;5;249m\]\l\[$(tput sgr0)\]\[\033[38;5;15m\][\[$(tput sgr0)\]\[\033[38;5;59m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]] \$(git branch 2>/dev/null | grep '^*' | colrm 1 2) \n\\$ \[$(tput sgr0)\] "
+#export PS1="${PS1UCOLOR}\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h:\[$(tput sgr0)\]\[\033[38;5;249m\]\l\[$(tput sgr0)\]\[\033[38;5;15m\][\[$(tput sgr0)\]\[\033[38;5;59m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]] \$(git branch 2>/dev/null | grep '^*' | colrm 1 2) \n\\$ \[$(tput sgr0)\] "
 #enables colorfor iTerm
 
 #export TERM=xterm-new
 #alias test1='ssh xun.luan@10.13.0.45 -t "sudo su -;" '
-export GOPATH="$HOME/code/go"
+#export GOPATH="$HOME/code/go"
 
-OS='uname'
-
+OS=`uname`
 export CODEPATH="$HOME/code/shooyaaa/"
-if [ "${os}" == "Darwin" ];then
+if [ "${OS}" = "Darwin" ];then
     export SEDI='mac'
 fi
 export EDITOR='vim'

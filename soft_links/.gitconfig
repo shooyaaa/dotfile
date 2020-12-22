@@ -15,3 +15,7 @@
     co = checkout
     hide = update-index --assume-unchanged
     unhide = update-index --no-assume-unchanged
+[url "git@bitbucket.org:funplus"]
+	insteadOf = https://bitbucket.org/funplus
+[url "git@bitbucket.org:funplus"]
+	insteadOf = bitbucket.org/funplus
